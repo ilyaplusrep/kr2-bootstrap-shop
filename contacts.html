@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты — RockRockRock</title>
+    <meta name="description" content="Контакты магазина камней RockRockRock: адрес, телефон, почта и часы работы.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alegreya:wght@700;900&family=Manrope:wght@400;500;600;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body>
+    <header class="site-header sticky-top">
+        <nav class="navbar navbar-expand-lg" aria-label="Основная навигация">
+            <div class="container-fluid px-3 px-lg-5">
+                <a class="navbar-brand" href="index.html">RockRockRock</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                    aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto gap-lg-4">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+                        <li class="nav-item"><a class="nav-link" href="catalog.html">Каталог</a></li>
+                        <li class="nav-item"><a class="nav-link" href="product.html">Товар</a></li>
+                        <li class="nav-item"><a class="nav-link" href="order.html">Заявка</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container py-4">
+        <nav aria-label="Хлебные крошки">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Контакты</li>
+            </ol>
+        </nav>
+
+        <h1 class="display-5 mb-4">Контакты</h1>
+
+        <!-- Сетка: от 992px адрес 7 из 12, призыв к заявке 5 из 12.
+             align-items-stretch (по умолчанию) + h-100 внутри — обе карточки одной высоты -->
+        <div class="row g-5 mb-5">
+            <section class="col-12 col-lg-7" id="address">
+                <div class="paper-card h-100 p-4">
+                    <h2 class="section-title">Как нас найти</h2>
+                    <address class="mb-0">
+                        <p><b>Адрес:</b> г. Москва, ул. Каменная, д. 1 (у большого камня)</p>
+                        <p><b>Телефон:</b> <a href="tel:+79000000000">+7 (900) 000-00-00</a></p>
+                        <p><b>Почта:</b> <a href="mailto:rockrock@ro.ck">rockrock@ro.ck</a></p>
+                        <p class="mb-0"><b>Часы работы:</b> всегда. Камни не спят.</p>
+                    </address>
+                </div>
+            </section>
+
+            <section class="col-12 col-lg-5">
+                <div class="promo h-100 p-4">
+                    <h2 class="fs-2 mb-3">Хотите камень?</h2>
+                    <p class="mb-4">Оставьте заявку — мы подберём камень, который подойдёт именно вам.</p>
+                    <a class="btn btn-primary" href="order.html">Оформить заявку</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <nav class="mb-3" aria-label="Быстрые ссылки">
+                <ul class="list-unstyled d-flex flex-wrap gap-3 mb-0">
+                    <li><a href="index.html#advantages">Почему камни</a></li>
+                    <li><a href="index.html#popular">Хиты продаж</a></li>
+                    <li><a href="index.html#faq">Вопросы</a></li>
+                    <li><a href="catalog.html#filters">Фильтры каталога</a></li>
+                    <li><a href="contacts.html#address">Как нас найти</a></li>
+                </ul>
+            </nav>
+            <p class="mb-0">© 2026 RockRockRock. Все камни защищены.</p>
+            <p class="mb-0">Почта: rockrock@ro.ck · Телефон: +7 (900) 000-00-00</p>
+        </div>
+    </footer>
+
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

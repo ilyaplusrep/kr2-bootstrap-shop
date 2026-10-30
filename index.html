@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RockRockRock - камни, которые ничего не делают</title>
+    <meta name="description"
+        content="Интернет-магазин камней: офисные, подарочные и премиальные камни. Хиты продаж и доставка.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alegreya:wght@700;900&family=Manrope:wght@400;500;600;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Сначала Bootstrap, потом свой CSS!!!!!!!!!!-->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body>
+    <!-- sticky-top — утилита Bootstrap: шапка прилипает к верху при прокрутке -->
+    <header class="site-header sticky-top">
+        <!-- navbar-expand-lg: от 992px меню в строку, уже — прячется под бургер -->
+        <nav class="navbar navbar-expand-lg" aria-label="Основная навигация">
+            <div class="container-fluid px-3 px-lg-5">
+                <a class="navbar-brand" href="index.html">RockRockRock</a>
+
+                <!-- Бургер: по клику JS Bootstrap показывает/прячет блок #mainNav -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                    aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <!-- ms-auto = margin-left: auto, прижимает меню вправо -->
+                    <ul class="navbar-nav ms-auto gap-lg-4">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Главная</a></li>
+                        <li class="nav-item"><a class="nav-link" href="catalog.html">Каталог</a></li>
+                        <li class="nav-item"><a class="nav-link" href="product.html">Товар</a></li>
+                        <li class="nav-item"><a class="nav-link" href="order.html">Заявка</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <!-- ===== HERO ===== -->
+        <section class="hero py-5">
+            <p class="hero__label mb-0">Магазин №1 среди камней</p>
+            <!-- display-3 — крупный заголовок Bootstrap, сам уменьшается на узких экранах -->
+            <h1 class="display-3 my-3">Камни, которые <span class="hero__accent">ничего</span> не&nbsp;делают</h1>
+            <p class="hero__text fs-5 mb-4">Не ломаются, не разряжаются, не требуют обновлений. Просто лежат. Идеально.</p>
+            <a class="btn btn-primary" href="catalog.html">Смотреть каталог</a>
+            <a class="hero__link ms-3" href="#advantages">Почему камни?</a>
+        </section>
+
+        <!-- ===== ПРЕИМУЩЕСТВА ===== -->
+        <section class="mb-5" id="advantages">
+            <h2 class="section-title">Почему наши камни</h2>
+            <!-- row — строка сетки, g-4 — промежутки между колонками.
+                 col-12 col-lg-4: до 992px каждая карточка на всю ширину, от 992px — три в ряд -->
+            <ul class="advantages row g-4 list-unstyled">
+                <li class="col-12 col-md-6 col-lg-4">
+                    <div class="advantage h-100">
+                        <h3 class="advantage__title">Вечная гарантия</h3>
+                        <p class="mb-0">Он камень. С ним ничего не случится.</p>
+                    </div>
+                </li>
+                <li class="col-12 col-md-6 col-lg-4">
+                    <div class="advantage h-100">
+                        <h3 class="advantage__title">Без подписки</h3>
+                        <p class="mb-0">Камень не просит денег каждый месяц.</p>
+                    </div>
+                </li>
+                <li class="col-12 col-md-6 col-lg-4">
+                    <div class="advantage h-100">
+                        <h3 class="advantage__title">Ноль уведомлений</h3>
+                        <p class="mb-0">Самый тихий камень в вашей жизни.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- ===== ХИТЫ + «КАМЕНЬ ДНЯ» =====
+             Внешняя сетка: от 992px хиты занимают 9 из 12, «Камень дня» — 3 из 12 -->
+        <div class="row g-4 align-items-start mb-5">
+            <section class="col-12 col-lg-9" id="popular">
+                <h2 class="section-title">Хиты продаж</h2>
+
+                <!-- Вложенная сетка для карточек: 1 в ряд → 2 (от 576px) → 3 (от 1200px) -->
+                <div class="row g-4">
+                    <div class="col-12 col-sm-6 col-xl-4">
+                        <!-- card — компонент Bootstrap, h-100 — карточки в ряду одной высоты -->
+                        <article class="card product-card h-100 p-3">
+                            <span class="badge badge--hit product-card__badge">Хит</span>
+                            <img class="product-card__image" src="images/rock-1.webp" alt="Камень Обыкновенный"
+                                width="300" height="300">
+                            <div class="card-body d-flex flex-column p-0 pt-3">
+                                <p class="product-card__price mb-0">99 ₽</p>
+                                <h3 class="card-title fs-5 my-2">Камень Обыкновенный</h3>
+                                <p class="card-text text-body-secondary">Классика. Серый, круглый, надёжный. Ничего лишнего.</p>
+                                <!-- mt-auto прижимает кнопки к низу карточки -->
+                                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-auto">
+                                    <a class="fw-bold" href="product.html">Подробнее</a>
+                                    <!-- data-bs-toggle/target — открыть модалку #orderModal, data-product — какой товар -->
+                                    <button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#orderModal" data-product="Камень Обыкновенный">Заказать</button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-xl-4">
+                        <article class="card product-card h-100 p-3">
+                            <span class="badge badge--new product-card__badge">Новинка</span>
+                            <img class="product-card__image" src="images/rock-2.webp" alt="Большой камень" width="300"
+                                height="300">
+                            <div class="card-body d-flex flex-column p-0 pt-3">
+                                <p class="product-card__price mb-0">4999 ₽</p>
+                                <h3 class="card-title fs-5 my-2">Большой камень</h3>
+                                <p class="card-text text-body-secondary">Реально большой. Давит. Всегда рядом.</p>
+                                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-auto">
+                                    <a class="fw-bold" href="product.html">Подробнее</a>
+                                    <button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#orderModal" data-product="Большой камень">Заказать</button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-xl-4">
+                        <article class="card product-card product-card--soldout h-100 p-3">
+                            <img class="product-card__image" src="images/rock-3.webp" alt="Камень «Люкс»" width="300"
+                                height="300">
+                            <div class="card-body d-flex flex-column p-0 pt-3">
+                                <p class="product-card__price mb-0">9999 ₽</p>
+                                <h3 class="card-title fs-5 my-2">Камень «Люкс»</h3>
+                                <p class="card-text text-body-secondary">Камень подороже.</p>
+                                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-auto">
+                                    <a class="fw-bold" href="product.html">Подробнее</a>
+                                    <button class="btn btn-primary" type="button" disabled>Нет в наличии</button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="col-12 col-lg-3">
+                <div class="promo p-4">
+                    <h2 class="fs-2 mb-2">Камень дня</h2>
+                    <p class="mb-0">Камень с глазками — скидка 20%. Он смотрит на вас. Купите его.</p>
+                    <a class="d-inline-block fw-bold mt-3" href="catalog.html">Найти в каталоге →</a>
+                </div>
+            </aside>
+        </div>
+
+        <!-- ===== FAQ — компонент Accordion ===== -->
+        <section class="mb-5" id="faq">
+            <h2 class="section-title">Частые вопросы</h2>
+
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <!-- Без data-bs-parent: вопросы раскрываются независимо, как <details> в КР1 -->
+                    <div class="accordion faq d-grid gap-3">
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq-1" aria-expanded="false" aria-controls="faq-1">
+                                    Камень живой?
+                                </button>
+                            </h3>
+                            <div class="accordion-collapse collapse" id="faq-1">
+                                <div class="accordion-body">Нет. Но он об этом не знает, поэтому не переживает.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq-2" aria-expanded="false" aria-controls="faq-2">
+                                    Что делать, если камень сломался?
+                                </button>
+                            </h3>
+                            <div class="accordion-collapse collapse" id="faq-2">
+                                <div class="accordion-body">Поздравляем: теперь у вас два камня.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq-3" aria-expanded="false" aria-controls="faq-3">
+                                    Можно ли вернуть камень?
+                                </button>
+                            </h3>
+                            <div class="accordion-collapse collapse" id="faq-3">
+                                <div class="accordion-body">Можно в течение 14 дней. Камень при этом не должен быть
+                                    использован. Как вы его используете - не наше дело.</div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq-4" aria-expanded="false" aria-controls="faq-4">
+                                    Почему так дорого?
+                                </button>
+                            </h3>
+                            <div class="accordion-collapse collapse" id="faq-4">
+                                <div class="accordion-body">Каждый камень формировался миллионы лет. Считайте, что вы
+                                    платите за выслугу.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== МОДАЛЬНОЕ ОКНО ЗАКАЗА — компонент Modal =====
+         fade — плавное появление. Открывается кнопками с data-bs-target="#orderModal" -->
+    <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="orderModalTitle">Оформление заявки</h2>
+                    <!-- data-bs-dismiss="modal" — Bootstrap закроет окно по клику -->
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+
+                <div class="modal-body">
+                    <p>Товар: <strong id="order-product-name"></strong></p>
+
+                    <!-- novalidate — отключаем стандартные пузыри браузера, ошибки покажет Bootstrap (.was-validated) -->
+                    <form id="order-form" action="#" method="post" novalidate>
+                        <input id="selected-product" name="product" type="hidden">
+
+                        <div class="mb-3">
+                            <label class="form-label" for="order-name">Имя</label>
+                            <input class="form-control" id="order-name" name="name" type="text"
+                                placeholder="Как вас зовут?" minlength="2" autocomplete="given-name" required>
+                            <div class="invalid-feedback">Введите имя, минимум 2 буквы.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="order-email">E-mail</label>
+                            <input class="form-control" id="order-email" name="email" type="email"
+                                placeholder="example@mail.ru" autocomplete="email" required>
+                            <div class="invalid-feedback">Введите корректный e-mail.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="order-phone">Телефон</label>
+                            <!-- input-group — поле с «приставкой» +7 слева -->
+                            <div class="input-group has-validation">
+                                <span class="input-group-text">+7</span>
+                                <input class="form-control" id="order-phone" name="phone" type="tel" inputmode="tel"
+                                    placeholder="(900) 000-00-00" pattern="\(\d{3}\) \d{3}-\d{2}-\d{2}" required>
+                                <div class="invalid-feedback">Формат: (900) 000-00-00</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="order-date">Когда доставить камень</label>
+                            <input class="form-control" id="order-date" name="date" type="date">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="order-topic">Тема заявки</label>
+                            <select class="form-select" id="order-topic" name="topic" required>
+                                <option value="">Выберите тему</option>
+                                <option value="product">Заказ камня</option>
+                                <option value="consultation">Консультация по камням</option>
+                                <option value="delivery">Доставка</option>
+                            </select>
+                            <div class="invalid-feedback">Выберите тему.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="order-comment">Комментарий</label>
+                            <textarea class="form-control" id="order-comment" name="comment" rows="4"
+                                placeholder="Пожелания к камню"></textarea>
+                        </div>
+
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" id="order-agreement" name="agreement" type="checkbox"
+                                required>
+                            <label class="form-check-label" for="order-agreement">Я согласен на обработку данных</label>
+                            <div class="invalid-feedback">Без согласия не можем принять заявку.</div>
+                        </div>
+
+                        <div class="d-flex justify-content-end flex-wrap gap-2">
+                            <button class="btn btn-outline-dark" type="button" data-bs-dismiss="modal">Закрыть</button>
+                            <button class="btn btn-primary" type="submit">Отправить заявку</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== УВЕДОМЛЕНИЕ ОБ ОТПРАВКЕ — компонент Toast =====
+         position-fixed bottom-0 end-0 — прибит к правому нижнему углу -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div class="toast" id="success-toast" role="status" aria-live="polite" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">Форма успешно отправлена! Камень уже собирается в путь.</div>
+                <button class="btn-close me-2 m-auto" type="button" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer" id="contacts">
+        <div class="container">
+            <nav class="mb-3" aria-label="Быстрые ссылки">
+                <!-- d-flex flex-wrap gap-3: ссылки в строку с отступами, переносятся на узком экране -->
+                <ul class="list-unstyled d-flex flex-wrap gap-3 mb-0">
+                    <li><a href="index.html#advantages">Почему камни</a></li>
+                    <li><a href="index.html#popular">Хиты продаж</a></li>
+                    <li><a href="index.html#faq">Вопросы</a></li>
+                    <li><a href="catalog.html#filters">Фильтры каталога</a></li>
+                    <li><a href="contacts.html#address">Как нас найти</a></li>
+                </ul>
+            </nav>
+            <p class="mb-0">© 2026 RockRockRock. Все камни защищены.</p>
+            <p class="mb-0">Почта: rockrock@ro.ck · Телефон: +7 (900) 000-00-00</p>
+        </div>
+    </footer>
+
+    <!-- bundle = Bootstrap JS + Popper (нужен для выпадашек и подсказок).
+         В конце body, чтобы HTML уже был загружен, когда скрипт начнёт работать -->
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- свой JS — после Bootstrap, потому что использует его объекты (bootstrap.Modal, bootstrap.Toast) -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

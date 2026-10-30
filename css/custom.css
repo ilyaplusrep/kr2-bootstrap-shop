@@ -1,0 +1,807 @@
+/* Файл подключается ПОСЛЕ bootstrap.min.css, поэтому его правила перекрывают Bootstrap.
+   Часть А — классы Bootstrap, которые мы перекрашиваем под стиль КР1.
+   Часть Б — полностью свои классы, в Bootstrap их нет. */
+
+
+/* =========================================
+   0. ПЕРЕМЕННЫЕ
+   ========================================= */
+:root {
+  /* --- наши (как в КР1) --- */
+  /* цвета */
+  --color-bg: #f3ede2;
+  --color-surface: #ffffff;
+  --color-text: #141210;
+  --color-text-muted: #4a4540;
+  --color-accent: #e0643a;
+  --color-accent-2: #a8d98f;
+  --color-accent-3: #f2c94c;
+  --color-border: #141210;
+
+  /* шрифты */
+  --font-text: "Manrope", sans-serif;
+  --font-title: "Alegreya", serif;
+
+  /* скругления */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-pill: 999px;
+
+  /* обводки и тени */
+  --border: 3px solid var(--color-border);
+  --shadow: 6px 6px 0 var(--color-border);
+  --shadow-lg: 10px 10px 0 var(--color-border);
+
+  --transition: 0.15s ease;
+
+  /* --- Bootstrap: подставляем в его переменные наши значения --- */
+  --bs-body-bg: var(--color-bg);
+  --bs-body-color: var(--color-text);
+  --bs-body-font-family: var(--font-text);
+  --bs-body-font-weight: 500;
+  --bs-body-line-height: 1.6;
+  --bs-secondary-color: var(--color-text-muted);
+  --bs-border-color: var(--color-border);
+  --bs-border-radius: var(--radius-sm);
+  --bs-border-radius-lg: var(--radius-md);
+  /* ссылки Bootstrap красит через RGB-переменные, поэтому цвет задаём тройкой чисел */
+  --bs-link-color-rgb: 20, 18, 16;
+  --bs-link-hover-color-rgb: 224, 100, 58;
+}
+
+
+/* #########################################################
+   ЧАСТЬ А. ПЕРЕКРАСКА BOOTSTRAP
+   Классы ниже уже есть в bootstrap.min.css — меняем им вид.
+   ######################################################### */
+
+/* =========================================
+   А1. КОНТЕЙНЕР
+   ========================================= */
+/* на больших экранах .container у Bootstrap шире, чем было в КР1 — ужимаем до 1100px */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1100px;
+  }
+}
+
+
+/* =========================================
+   А2. КНОПКИ (.btn, .btn-primary, .btn-outline-dark)
+   ========================================= */
+.btn {
+  --bs-btn-padding-x: 28px;
+  --bs-btn-padding-y: 14px;
+  --bs-btn-font-weight: 800;
+  --bs-btn-border-width: 0;
+  --bs-btn-border-radius: var(--radius-pill);
+  --bs-btn-disabled-opacity: 0.45;
+  white-space: nowrap;
+  transition: transform var(--transition), box-shadow var(--transition), background-color var(--transition);
+}
+
+/* наведение — кнопка «приподнимается» (у Bootstrap такого нет) */
+.btn:hover:not(:disabled) {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--color-border);
+}
+
+/* нажатие — кнопка «вдавливается» обратно */
+.btn:active:not(:disabled) {
+  transform: translate(0, 0);
+  box-shadow: none;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--color-text);
+  --bs-btn-color: var(--color-bg);
+  --bs-btn-hover-bg: var(--color-accent);
+  --bs-btn-hover-color: var(--color-bg);
+  --bs-btn-active-bg: var(--color-accent);
+  --bs-btn-active-color: var(--color-bg);
+  --bs-btn-disabled-bg: var(--color-text);
+  --bs-btn-disabled-color: var(--color-bg);
+}
+
+/* «призрачная» кнопка: прозрачная с обводкой */
+.btn-outline-dark {
+  --bs-btn-color: var(--color-text);
+  --bs-btn-hover-bg: var(--color-text);
+  --bs-btn-hover-color: var(--color-bg);
+  --bs-btn-active-bg: var(--color-text);
+  --bs-btn-active-color: var(--color-bg);
+  box-shadow: inset 0 0 0 3px var(--color-border);
+}
+
+
+/* =========================================
+   А3. БЕЙДЖ (.badge) — делаем из него наклейку
+   ========================================= */
+.badge {
+  padding: 2px 10px;
+  border: 2px solid var(--color-border);
+  border-radius: 0;
+  background-color: var(--color-accent-2);
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.6;
+  text-transform: uppercase;
+  transform: rotate(-2deg);
+}
+
+
+/* =========================================
+   А4. МЕНЮ (.navbar, .navbar-brand, .nav-link, .navbar-toggler)
+   ========================================= */
+.navbar {
+  --bs-navbar-padding-y: 16px;
+  --bs-navbar-color: var(--color-text);
+  --bs-navbar-hover-color: var(--color-accent);
+  --bs-navbar-active-color: var(--color-accent);
+  --bs-navbar-brand-color: var(--color-text);
+  --bs-navbar-brand-hover-color: var(--color-text);
+  --bs-navbar-brand-font-size: 28px;
+  --bs-navbar-toggler-border-color: var(--color-border);
+  --bs-navbar-toggler-border-radius: var(--radius-sm);
+}
+
+.navbar-brand {
+  font-family: var(--font-title);
+  font-weight: 900;
+}
+
+.navbar .nav-link {
+  font-weight: 600;
+}
+
+.navbar .nav-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.navbar-toggler {
+  border-width: 3px;
+}
+
+.navbar-toggler:focus {
+  box-shadow: 4px 4px 0 var(--color-border);
+}
+
+
+/* =========================================
+   А5. КАРТОЧКА (.card)
+   ========================================= */
+.card {
+  --bs-card-bg: var(--color-surface);
+  --bs-card-border-width: 3px;
+  --bs-card-border-color: var(--color-border);
+  --bs-card-border-radius: var(--radius-md);
+}
+
+
+/* =========================================
+   А6. АККОРДЕОН (.accordion) — FAQ
+   У Bootstrap пункты склеены в один блок, а в КР1 были отдельные
+   карточки с тенью и значком «+» — переделываем.
+   ========================================= */
+.faq {
+  --bs-accordion-bg: var(--color-surface);
+  --bs-accordion-color: var(--color-text);
+  --bs-accordion-border-width: 3px;
+  --bs-accordion-border-color: var(--color-border);
+  --bs-accordion-border-radius: var(--radius-md);
+  --bs-accordion-btn-padding-x: 32px;
+  --bs-accordion-btn-padding-y: 16px;
+  --bs-accordion-btn-focus-box-shadow: inset 0 0 0 3px var(--color-accent-2);
+  --bs-accordion-active-bg: var(--color-surface);
+  --bs-accordion-active-color: var(--color-text);
+  --bs-accordion-body-padding-x: 32px;
+}
+
+/* каждый вопрос — отдельная карточка (у Bootstrap у 2-го и дальше нет верхней рамки) */
+.faq .accordion-item {
+  overflow: hidden;
+  border: var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+/* открытый вопрос приподнимается (.show Bootstrap ставит на раскрытый блок) */
+.faq .accordion-item:has(.accordion-collapse.show) {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.faq .accordion-button {
+  gap: 16px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.faq .accordion-button:not(.collapsed) {
+  box-shadow: none;
+}
+
+/* вместо стрелки Bootstrap — свой значок «+» в кружке */
+.faq .accordion-button::after {
+  content: "+";
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  background-image: none;
+  background-color: var(--color-accent-2);
+  font-size: 20px;
+}
+
+/* открытый вопрос: «+» поворачивается в «×» */
+.faq .accordion-button:not(.collapsed)::after {
+  background-image: none;
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+  transform: rotate(45deg);
+}
+
+.faq .accordion-body {
+  padding-top: 0;
+  color: var(--color-text-muted);
+}
+
+
+/* =========================================
+   А7. МОДАЛЬНОЕ ОКНО (.modal)
+   ========================================= */
+.modal {
+  --bs-modal-width: 560px;
+  --bs-modal-padding: 32px;
+  --bs-modal-bg: var(--color-bg);
+  --bs-modal-border-width: 3px;
+  --bs-modal-border-color: var(--color-border);
+  --bs-modal-border-radius: var(--radius-md);
+  --bs-modal-header-padding: 32px 32px 0;
+  --bs-modal-header-border-width: 0;
+}
+
+.modal-content {
+  box-shadow: var(--shadow-lg);
+}
+
+.modal-title {
+  font-size: 32px;
+}
+
+/* затемнение фона под окном */
+.modal-backdrop {
+  --bs-backdrop-bg: var(--color-text);
+  --bs-backdrop-opacity: 0.6;
+}
+
+
+/* =========================================
+   А8. ФОРМЫ (.form-label, .form-control, .form-select, .input-group-text, .form-check-input)
+   ========================================= */
+.form-label {
+  margin-bottom: 4px;
+  font-weight: 800;
+}
+
+.form-control,
+.form-select {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 14px;
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.form-control:hover,
+.form-select:hover {
+  border-color: var(--color-accent-2);
+}
+
+/* фокус: вместо синего свечения Bootstrap — жёсткая тень, как в КР1 */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--color-accent-2);
+  box-shadow: 4px 4px 0 var(--color-border);
+}
+
+/* «приставка» +7 у телефона */
+.input-group-text {
+  background-color: var(--color-accent-2);
+  border: 2px solid var(--color-border);
+  font-weight: 800;
+}
+
+.form-check-input {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  border: 2px solid var(--color-border);
+  cursor: pointer;
+}
+
+.form-check-input:checked {
+  background-color: var(--color-accent);
+  border-color: var(--color-border);
+}
+
+.form-check-input:focus {
+  border-color: var(--color-border);
+  box-shadow: 0 0 0 3px var(--color-accent-2);
+}
+
+.form-check-label {
+  margin-left: 4px;
+  cursor: pointer;
+}
+
+/* переключатель (.form-switch) шире обычного чекбокса */
+.form-switch .form-check-input {
+  width: 40px;
+}
+
+
+/* =========================================
+   А9. УВЕДОМЛЕНИЕ (.toast)
+   ========================================= */
+.toast {
+  --bs-toast-bg: var(--color-accent-2);
+  --bs-toast-color: var(--color-text);
+  --bs-toast-font-size: 16px;
+  --bs-toast-border-width: 3px;
+  --bs-toast-border-color: var(--color-border);
+  --bs-toast-border-radius: 0;
+  --bs-toast-box-shadow: var(--shadow);
+  font-weight: 800;
+}
+
+
+/* =========================================
+   А10. КРУПНЫЕ ЗАГОЛОВКИ (.display-*)
+   ========================================= */
+/* у Bootstrap они тонкие (300) — делаем жирными, как заголовки в КР1 */
+.display-3,
+.display-5 {
+  font-weight: 900;
+}
+
+
+/* =========================================
+   А11. ХЛЕБНЫЕ КРОШКИ (.breadcrumb)
+   ========================================= */
+.breadcrumb {
+  --bs-breadcrumb-font-size: 14px;
+  --bs-breadcrumb-divider-color: var(--color-text-muted);
+  --bs-breadcrumb-item-active-color: var(--color-text);
+}
+
+.breadcrumb a {
+  color: var(--color-text-muted);
+}
+
+.breadcrumb a:hover {
+  color: var(--color-accent);
+}
+
+.breadcrumb-item.active {
+  font-weight: 600;
+}
+
+
+/* =========================================
+   А12. УВЕДОМЛЕНИЯ (.alert)
+   ========================================= */
+.alert {
+  --bs-alert-border: var(--border);
+  --bs-alert-border-radius: var(--radius-md);
+  --bs-alert-color: var(--color-text);
+  font-weight: 800;
+  box-shadow: var(--shadow);
+}
+
+.alert-warning {
+  --bs-alert-bg: var(--color-accent-3);
+}
+
+.alert-success {
+  --bs-alert-bg: var(--color-accent-2);
+}
+
+
+/* =========================================
+   А13. ВКЛАДКИ (.nav-tabs, .tab-content)
+   ========================================= */
+.nav-tabs {
+  --bs-nav-link-color: var(--color-text-muted);
+  --bs-nav-link-hover-color: var(--color-accent);
+  --bs-nav-link-font-weight: 800;
+  --bs-nav-tabs-border-width: 3px;
+  --bs-nav-tabs-border-color: var(--color-border);
+  --bs-nav-tabs-border-radius: var(--radius-md);
+  --bs-nav-tabs-link-hover-border-color: transparent;
+  --bs-nav-tabs-link-active-color: var(--color-text);
+  --bs-nav-tabs-link-active-bg: var(--color-surface);
+  --bs-nav-tabs-link-active-border-color: var(--color-border) var(--color-border) var(--color-surface);
+}
+
+/* панель под вкладками — продолжение активной вкладки: белая, с рамкой (кроме верха) и тенью */
+.tab-content {
+  padding: 24px;
+  background-color: var(--color-surface);
+  border: var(--border);
+  border-top: 0;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  box-shadow: var(--shadow);
+}
+
+
+/* =========================================
+   А14. ТАБЛИЦА (.table, .table-dark)
+   ========================================= */
+.table {
+  --bs-table-bg: var(--color-surface);
+  --bs-table-color: var(--color-text);
+  --bs-table-border-color: var(--color-border);
+  --bs-table-hover-bg: var(--color-bg);
+  --bs-table-hover-color: var(--color-text);
+}
+
+/* ячейки: отступы и линия между строками как в КР1 */
+.table > :not(caption) > * > * {
+  padding: 12px 16px;
+  border-bottom-width: 2px;
+}
+
+/* table-responsive должна прокручиваться только вбок (на телефоне), вертикальный скролл не нужен */
+.table-responsive {
+  overflow-y: hidden;
+}
+
+/* шапка таблицы — тёмная */
+.table-dark {
+  --bs-table-bg: var(--color-text);
+  --bs-table-color: var(--color-bg);
+  --bs-table-border-color: var(--color-border);
+}
+
+
+/* =========================================
+   А15. СПИСОК-ПЛАШКИ (.list-group)
+   ========================================= */
+.list-group {
+  --bs-list-group-bg: var(--color-surface);
+  --bs-list-group-color: var(--color-text);
+  --bs-list-group-border-color: var(--color-border);
+  --bs-list-group-border-width: 2px;
+  --bs-list-group-border-radius: var(--radius-sm);
+  --bs-list-group-item-padding-y: 12px;
+}
+
+
+/* #########################################################
+   ЧАСТЬ Б. СВОИ КЛАССЫ И БАЗОВЫЕ СТИЛИ
+   Этого в Bootstrap нет — написано нами, как в КР1.
+   ######################################################### */
+
+/* =========================================
+   Б1. БАЗА (стили для тегов)
+   ========================================= */
+/* подвал прижат к низу, даже если контента мало */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-title);
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+a {
+  transition: color var(--transition);
+}
+
+/* единый видимый фокус для ссылок и кнопок */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--color-accent-2);
+  outline-offset: 3px;
+}
+
+
+/* =========================================
+   Б2. ШРИФТ ЗАГОЛОВКОВ ДЛЯ ЛЮБОГО ЭЛЕМЕНТА
+   ========================================= */
+.font-title {
+  font-family: var(--font-title);
+  font-weight: 900;
+}
+
+
+/* =========================================
+   Б3. ЗАГОЛОВОК РАЗДЕЛА — с цветной полосой-маркером под текстом
+   ========================================= */
+.section-title {
+  position: relative;
+  display: inline-block;
+  font-size: 40px;
+  margin-bottom: 32px;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: -6px;
+  right: -6px;
+  bottom: 4px;
+  z-index: -1;
+  height: 14px;
+  background-color: var(--color-accent-2);
+  transform: rotate(-1deg);
+}
+
+
+/* =========================================
+   Б4. ЦВЕТА НАКЛЕЕК — модификаторы к .badge
+   ========================================= */
+.badge--hit {
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+}
+
+.badge--new {
+  background-color: var(--color-accent-2);
+}
+
+.badge--sale {
+  background-color: var(--color-accent-3);
+}
+
+
+/* =========================================
+   Б5. ШАПКА
+   ========================================= */
+.site-header {
+  background-color: var(--color-bg);
+  border-bottom: var(--border);
+}
+
+
+/* =========================================
+   Б6. ПОДВАЛ
+   ========================================= */
+.site-footer {
+  padding: 32px 0;
+  border-top: var(--border);
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.site-footer a {
+  color: inherit;
+  font-weight: 600;
+}
+
+.site-footer a:hover {
+  color: var(--color-accent);
+}
+
+
+/* =========================================
+   Б7. ЯКОРЯ
+   ========================================= */
+/* отступ сверху, чтобы липкая шапка не закрывала раздел при переходе по якорю */
+[id] {
+  scroll-margin-top: 100px;
+}
+
+/* раздел, на который перешли по якорю, обводится пунктиром */
+section:target {
+  outline: 3px dashed var(--color-accent);
+  outline-offset: 8px;
+}
+
+
+/* =========================================
+   Б8. HERO
+   ========================================= */
+/* надпись над заголовком — наклейка */
+.hero__label {
+  display: inline-block;
+  padding: 4px 12px;
+  border: 2px solid var(--color-border);
+  background-color: var(--color-accent-2);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transform: rotate(-2deg);
+}
+
+.hero__accent {
+  display: inline-block;
+  padding: 0 16px 6px;
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  transform: rotate(-2deg);
+}
+
+.hero__text {
+  max-width: 560px;
+}
+
+.hero__link {
+  font-weight: 800;
+}
+
+
+/* =========================================
+   Б9. ПРЕИМУЩЕСТВА — карточки-наклейки с номерами, которые CSS считает сам
+   ========================================= */
+.advantages {
+  counter-reset: advantage;
+}
+
+.advantage {
+  counter-increment: advantage;
+  position: relative;
+  padding: 24px 24px 24px 80px;
+  background-color: var(--color-surface);
+  border: var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+}
+
+.advantage::before {
+  content: counter(advantage);
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+  font-family: var(--font-title);
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.advantage__title {
+  font-size: 24px;
+}
+
+
+/* =========================================
+   Б10. КАРТОЧКА ТОВАРА — дополняет .card от Bootstrap
+   ========================================= */
+.product-card {
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+/* карточка приподнимается при наведении */
+.product-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.product-card__image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-bg);
+}
+
+/* бейдж — наклейка в углу поверх картинки */
+.product-card__badge {
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  z-index: 1;
+}
+
+.product-card__price {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+/* товара нет в наличии — картинка серая */
+.product-card--soldout .product-card__image {
+  filter: grayscale(1);
+  opacity: 0.6;
+}
+
+
+/* =========================================
+   Б11. «КАМЕНЬ ДНЯ» — слегка наклеен криво
+   ========================================= */
+.promo {
+  background-color: var(--color-accent-2);
+  border: var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+  transform: rotate(1.5deg);
+}
+
+
+/* =========================================
+   Б12. ФИЛЬТРЫ КАТАЛОГА
+   ========================================= */
+.filters {
+  background-color: var(--color-surface);
+  border: var(--border);
+  border-radius: var(--radius-md);
+}
+
+/* от 992px фильтры прилипают при прокрутке (100px — под липкой шапкой) */
+@media (min-width: 992px) {
+  .filters-col {
+    position: sticky;
+    top: 100px;
+  }
+}
+
+
+/* =========================================
+   Б13. СТРАНИЦА ТОВАРА
+   ========================================= */
+.product-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background-color: var(--color-surface);
+  border: var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+}
+
+.product-price {
+  font-size: 32px;
+  font-weight: 800;
+}
+
+
+/* =========================================
+   Б14. БЕЛАЯ КАРТОЧКА — форма заявки, контакты
+   ========================================= */
+.paper-card {
+  background-color: var(--color-surface);
+  border: var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+}
+
+
+/* =========================================
+   Б15. ДЕКОР: ЗЕРНИСТОСТЬ ФОНА
+   ========================================= */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.3;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}

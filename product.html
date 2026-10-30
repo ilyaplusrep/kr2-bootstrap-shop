@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Камень Обыкновенный — RockRockRock</title>
+    <meta name="description" content="Камень Обыкновенный: серый, круглый, надёжный. Характеристики, уход и доставка.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alegreya:wght@700;900&family=Manrope:wght@400;500;600;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body>
+    <header class="site-header sticky-top">
+        <nav class="navbar navbar-expand-lg" aria-label="Основная навигация">
+            <div class="container-fluid px-3 px-lg-5">
+                <a class="navbar-brand" href="index.html">RockRockRock</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                    aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto gap-lg-4">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+                        <li class="nav-item"><a class="nav-link" href="catalog.html">Каталог</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="product.html">Товар</a></li>
+                        <li class="nav-item"><a class="nav-link" href="order.html">Заявка</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container py-4">
+        <nav aria-label="Хлебные крошки">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+                <li class="breadcrumb-item"><a href="catalog.html">Каталог</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Камень Обыкновенный</li>
+            </ol>
+        </nav>
+
+        <!-- ===== ТОВАР =====
+             Две колонки по 6 из 12 от 992px: слева фото, справа описание. Уже — друг под другом.
+             g-5 — промежуток побольше, align-items-center — по вертикали по центру -->
+        <article class="row g-5 align-items-center mb-5">
+            <div class="col-12 col-lg-6">
+                <!-- img-fluid — утилита Bootstrap: картинка не шире своей колонки -->
+                <img class="product-photo img-fluid" src="images/rock-1.webp"
+                    alt="Серый круглый камень на светлом фоне" width="480" height="480">
+            </div>
+
+            <div class="col-12 col-lg-6">
+                <span class="badge badge--hit">Хит</span>
+                <h1 class="display-5 mt-2 mb-3">Камень Обыкновенный</h1>
+                <p class="fs-5">Классика жанра. Серый, круглый, надёжный. Не требует зарядки, обновлений и внимания.
+                    Идеально лежит на столе, полке или в кармане.</p>
+                <p class="product-price mb-4">99 ₽</p>
+
+                <!-- d-flex flex-wrap gap-3 — кнопки в строку, на узком экране переносятся -->
+                <div class="d-flex flex-wrap gap-3">
+                    <a class="btn btn-primary" href="order.html">Оформить заявку</a>
+                    <a class="btn btn-outline-dark" href="catalog.html">← В каталог</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- ===== ВКЛАДКИ — компонент Tabs =====
+             Кнопка с data-bs-toggle="tab" показывает блок из data-bs-target, остальные прячет -->
+        <section class="mb-5" aria-label="Подробности о товаре">
+            <ul class="nav nav-tabs" id="productTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="specs-tab" type="button" role="tab" data-bs-toggle="tab"
+                        data-bs-target="#specs-pane" aria-controls="specs-pane" aria-selected="true">Характеристики</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="care-tab" type="button" role="tab" data-bs-toggle="tab"
+                        data-bs-target="#care-pane" aria-controls="care-pane" aria-selected="false">Уход</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="delivery-tab" type="button" role="tab" data-bs-toggle="tab"
+                        data-bs-target="#delivery-pane" aria-controls="delivery-pane" aria-selected="false">Доставка</button>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <!-- show active — эта вкладка открыта сразу; fade — плавное переключение -->
+                <div class="tab-pane fade show active" id="specs-pane" role="tabpanel" aria-labelledby="specs-tab"
+                    tabindex="0">
+                    <!-- table-responsive — на узком экране таблица прокручивается вбок, а не ломает страницу -->
+                    <div class="table-responsive">
+                        <!-- table — базовый вид таблицы Bootstrap, table-hover — подсветка строки под курсором -->
+                        <table class="table table-hover mb-0">
+                            <caption class="visually-hidden">Характеристики камня</caption>
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">Параметр</th>
+                                    <th scope="col">Значение</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Вес</th>
+                                    <td>450 г</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Твёрдость по Моосу</th>
+                                    <td>6</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Уровень спокойствия</th>
+                                    <td>10 из 10</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Полезность</th>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Требует ухода</th>
+                                    <td>Нет</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Гарантия</th>
+                                    <td>Вечная — он камень</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="care-pane" role="tabpanel" aria-labelledby="care-tab" tabindex="0">
+                    <p>Камень не требует ухода. Но если очень хочется:</p>
+                    <ul class="mb-0">
+                        <li>Протирайте раз в год. Или не протирайте — он не обидится.</li>
+                        <li>Не кормите. Камни не едят.</li>
+                        <li>Разговаривать можно. Отвечать он не будет.</li>
+                    </ul>
+                </div>
+
+                <div class="tab-pane fade" id="delivery-pane" role="tabpanel" aria-labelledby="delivery-tab"
+                    tabindex="0">
+                    <!-- list-group — компонент Bootstrap: список-плашки -->
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Курьером по городу <span class="fw-bold">от 199 ₽</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Почтой России <span class="fw-bold">от 299 ₽</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Самовывоз из каменоломни <span class="fw-bold">бесплатно</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <nav class="mb-3" aria-label="Быстрые ссылки">
+                <ul class="list-unstyled d-flex flex-wrap gap-3 mb-0">
+                    <li><a href="index.html#advantages">Почему камни</a></li>
+                    <li><a href="index.html#popular">Хиты продаж</a></li>
+                    <li><a href="index.html#faq">Вопросы</a></li>
+                    <li><a href="catalog.html#filters">Фильтры каталога</a></li>
+                    <li><a href="contacts.html#address">Как нас найти</a></li>
+                </ul>
+            </nav>
+            <p class="mb-0">© 2026 RockRockRock. Все камни защищены.</p>
+            <p class="mb-0">Почта: rockrock@ro.ck · Телефон: +7 (900) 000-00-00</p>
+        </div>
+    </footer>
+
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

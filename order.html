@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформление заявки — RockRockRock</title>
+    <meta name="description" content="Оформите заявку на камень: выберите камень, оставьте контакты, и мы доставим.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alegreya:wght@700;900&family=Manrope:wght@400;500;600;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body>
+    <header class="site-header sticky-top">
+        <nav class="navbar navbar-expand-lg" aria-label="Основная навигация">
+            <div class="container-fluid px-3 px-lg-5">
+                <a class="navbar-brand" href="index.html">RockRockRock</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                    aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto gap-lg-4">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+                        <li class="nav-item"><a class="nav-link" href="catalog.html">Каталог</a></li>
+                        <li class="nav-item"><a class="nav-link" href="product.html">Товар</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="order.html">Заявка</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container py-4">
+        <nav aria-label="Хлебные крошки">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Заявка</li>
+            </ol>
+        </nav>
+
+        <h1 class="display-5 mb-4">Оформление заявки</h1>
+
+        <!-- Сетка: от 992px форма 7 из 12, подсказка справа 5 из 12 -->
+        <div class="row g-5 mb-5">
+            <section class="col-12 col-lg-7">
+                <!-- Alert — компонент Bootstrap. d-none — спрятан, JS покажет после отправки.
+                     alert-dismissible + btn-close с data-bs-dismiss="alert" — можно закрыть крестиком -->
+                <div class="alert alert-success alert-dismissible d-none" id="order-success" role="status">
+                    Заявка отправлена! Камень уже собирается в путь.
+                    <button class="btn-close" type="button" aria-label="Закрыть"></button>
+                </div>
+
+                <!-- novalidate — ошибки покажет Bootstrap (.was-validated), а не стандартные пузыри браузера -->
+                <form class="paper-card p-4" id="order-form" action="#" method="post" novalidate>
+                    <div class="mb-3">
+                        <label class="form-label" for="order-product">Камень</label>
+                        <!-- form-select — выпадающий список в стиле Bootstrap -->
+                        <select class="form-select" id="order-product" name="product" required>
+                            <option value="">Выберите камень</option>
+                            <option value="ordinary">Камень Обыкновенный — 99 ₽</option>
+                            <option value="big">Большой камень — 4999 ₽</option>
+                            <option value="lux" disabled>Камень «Люкс» — нет в наличии</option>
+                            <option value="small">Маленький камень — 49 ₽</option>
+                            <option value="eyes">Камень с глазками — 199 ₽</option>
+                            <option value="precious">Драгоценный камень — 1999 ₽</option>
+                        </select>
+                        <div class="invalid-feedback">Выберите камень.</div>
+                    </div>
+
+                    <!-- Имя и e-mail: от 768px в две колонки, уже — друг под другом -->
+                    <div class="row g-3 mb-3">
+                        <div class="col-12 col-md-6">
+                            <label class="form-label" for="order-name">Имя</label>
+                            <input class="form-control" id="order-name" name="name" type="text"
+                                placeholder="Как вас зовут?" minlength="2" autocomplete="given-name" required>
+                            <div class="invalid-feedback">Введите имя, минимум 2 буквы.</div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label class="form-label" for="order-email">E-mail</label>
+                            <input class="form-control" id="order-email" name="email" type="email"
+                                placeholder="example@mail.ru" autocomplete="email" required>
+                            <div class="invalid-feedback">Введите корректный e-mail.</div>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-12 col-md-6">
+                            <label class="form-label" for="order-phone">Телефон</label>
+                            <!-- input-group — поле с «приставкой» +7 слева -->
+                            <div class="input-group has-validation">
+                                <span class="input-group-text">+7</span>
+                                <input class="form-control" id="order-phone" name="phone" type="tel" inputmode="tel"
+                                    placeholder="(900) 000-00-00" pattern="\(\d{3}\) \d{3}-\d{2}-\d{2}"
+                                    aria-describedby="order-phone-hint" required>
+                                <div class="invalid-feedback">Формат: (900) 000-00-00</div>
+                            </div>
+                            <!-- form-text — серая подсказка под полем -->
+                            <div class="form-text" id="order-phone-hint">Формат: (900) 000-00-00</div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label class="form-label" for="order-date">Когда доставить камень</label>
+                            <input class="form-control" id="order-date" name="date" type="date">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="order-comment">Комментарий</label>
+                        <textarea class="form-control" id="order-comment" name="comment" rows="4"
+                            placeholder="Пожелания к камню"></textarea>
+                    </div>
+
+                    <div class="form-check mb-4">
+                        <input class="form-check-input" id="order-agreement" name="agreement" type="checkbox" required>
+                        <label class="form-check-label" for="order-agreement">Я согласен на обработку данных</label>
+                        <div class="invalid-feedback">Без согласия не можем принять заявку.</div>
+                    </div>
+
+                    <button class="btn btn-primary" type="submit">Отправить заявку</button>
+                </form>
+            </section>
+
+            <aside class="col-12 col-lg-5">
+                <div class="promo p-4">
+                    <h2 class="fs-3 mb-3">Как это работает</h2>
+                    <!-- list-group-numbered — нумерованный список-плашки -->
+                    <ol class="list-group list-group-numbered mb-3">
+                        <li class="list-group-item">Вы оставляете заявку</li>
+                        <li class="list-group-item">Мы звоним и уточняем камень</li>
+                        <li class="list-group-item">Камень едет к вам</li>
+                        <li class="list-group-item">Вы его кладёте. Всё.</li>
+                    </ol>
+                    <p class="mb-0">Остались вопросы? <a class="fw-bold" href="contacts.html">Напишите нам →</a></p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <nav class="mb-3" aria-label="Быстрые ссылки">
+                <ul class="list-unstyled d-flex flex-wrap gap-3 mb-0">
+                    <li><a href="index.html#advantages">Почему камни</a></li>
+                    <li><a href="index.html#popular">Хиты продаж</a></li>
+                    <li><a href="index.html#faq">Вопросы</a></li>
+                    <li><a href="catalog.html#filters">Фильтры каталога</a></li>
+                    <li><a href="contacts.html#address">Как нас найти</a></li>
+                </ul>
+            </nav>
+            <p class="mb-0">© 2026 RockRockRock. Все камни защищены.</p>
+            <p class="mb-0">Почта: rockrock@ro.ck · Телефон: +7 (900) 000-00-00</p>
+        </div>
+    </footer>
+
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

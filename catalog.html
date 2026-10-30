@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог камней — RockRockRock</title>
+    <meta name="description" content="Каталог камней: офисные, подарочные, премиальные и для бедных. Фильтры по категории и наличию.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alegreya:wght@700;900&family=Manrope:wght@400;500;600;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body>
+    <header class="site-header sticky-top">
+        <nav class="navbar navbar-expand-lg" aria-label="Основная навигация">
+            <div class="container-fluid px-3 px-lg-5">
+                <a class="navbar-brand" href="index.html">RockRockRock</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                    aria-controls="mainNav" aria-expanded="false" aria-label="Открыть меню">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto gap-lg-4">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="catalog.html">Каталог</a></li>
+                        <li class="nav-item"><a class="nav-link" href="product.html">Товар</a></li>
+                        <li class="nav-item"><a class="nav-link" href="order.html">Заявка</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container py-4">
+        <!-- Breadcrumb — компонент Bootstrap, разделитель «/» он ставит сам -->
+        <nav aria-label="Хлебные крошки">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Каталог</li>
+            </ol>
+        </nav>
+
+        <h1 class="display-5 mb-4">Каталог камней</h1>
+
+        <!-- Сетка: от 992px фильтры слева 3 из 12, товары справа 9 из 12; уже — фильтры над товарами -->
+        <div class="row g-4 align-items-start mb-5">
+
+            <!-- ===== ФИЛЬТРЫ ===== -->
+            <aside class="col-12 col-lg-3 filters-col" id="filters">
+                <!-- Кнопка видна только на телефоне/планшете (d-lg-none) и сворачивает фильтры -->
+                <button class="btn btn-outline-dark w-100 d-lg-none mb-3" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#filtersBody" aria-expanded="false" aria-controls="filtersBody">
+                    Показать фильтры
+                </button>
+
+                <!-- collapse — спрятано, d-lg-block — но от 992px всегда показано -->
+                <div class="collapse d-lg-block" id="filtersBody">
+                    <form class="filters p-4" id="filters-form">
+                        <h2 class="fs-3 mb-3">Фильтры</h2>
+
+                        <h3 class="fs-5 mb-2">Категория</h3>
+                        <div class="form-check">
+                            <input class="form-check-input" id="cat-office" type="checkbox" name="category" value="office">
+                            <label class="form-check-label" for="cat-office">Офисные</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" id="cat-gift" type="checkbox" name="category" value="gift">
+                            <label class="form-check-label" for="cat-gift">Подарочные</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" id="cat-premium" type="checkbox" name="category" value="premium">
+                            <label class="form-check-label" for="cat-premium">Премиум</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" id="cat-budget" type="checkbox" name="category" value="budget">
+                            <label class="form-check-label" for="cat-budget">Для бедных</label>
+                        </div>
+
+                        <h3 class="fs-5 mt-3 mb-2">Наличие</h3>
+                        <!-- form-switch — тот же чекбокс, но в виде переключателя -->
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" id="in-stock" type="checkbox" name="stock" value="yes" role="switch">
+                            <label class="form-check-label" for="in-stock">Только в наличии</label>
+                        </div>
+
+                        <button class="btn btn-outline-dark w-100 mt-4" type="reset">Сбросить</button>
+                    </form>
+                </div>
+            </aside>
+
+            <!-- ===== ТОВАРЫ ===== -->
+            <section class="col-12 col-lg-9" aria-label="Список товаров">
+                <p class="text-body-secondary mb-3">Найдено камней: <strong id="products-count">6</strong></p>
+
+                <!-- Alert — компонент Bootstrap. d-none — спрятан, JS покажет, если ничего не нашлось -->
+                <div class="alert alert-warning d-none" id="products-empty" role="status">
+                    Таких камней нет. Попробуйте убрать часть фильтров.
+                </div>
+
+                <!-- Карточки: 1 в ряд → 2 (от 576px) → 3 (от 1200px).
+                     data-category и data-stock — метки для фильтра в JS -->
+                <div class="row g-4">
+                    <div class="col-12 col-sm-6 col-xl-4" data-category="office budget" data-stock="yes">
+                        <article class="card product-card h-100 p-3">
+                            <span class="badge badge--hit product-card__badge">Хит</span>
+                            <img class="product-card__image" src="images/rock-1.webp" alt="Камень Обыкновенный"
+                                width="300" height="300">
+                            <div class="card-body d-flex flex-column p-0 pt-3">
+                                <p class="product-card__price mb-0">99 ₽</p>
+                                <h3 class="card-title fs-5 my-2">Камень Обыкновенный</h3>
+                                <p class="card-text text-body-secondary">Классика. Серый, круглый, надёжный.</p>
+                                <a class="btn btn-primary mt-auto" href="product.html">Подробнее</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-xl-4" data-category="office" data-stock="yes">
+                        <article class="card product-card h-100 p-3">
+                            <span class="badge badge--new product-card__badge">Новинка</span>
+                            <img class="product-card__image" src="images/rock-2.webp" alt="Большой камень" width="300"
+                                height="300">
+                            <div class="card-body d-flex flex-column p-0 pt-3">
+                                <p class="product-card__price mb-0">4999 ₽</p>
+                                <h3 class="card-title fs-5 my-2">Большой камень</h3>
+                                <p class="card-text text-body-secondary">Реально большой. Давит. Всегда рядом.</p>
+                                <a class="btn btn-primary mt-auto" href="product.html">Подробнее</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-xl-4" data-category="premium gift" data-stock="no">
+                        <article class="card product-card product-card--soldout h-100 p-3">
+                            <span class="badge bg-dark text-white product-card__badge">Нет в наличии</span>
+                            <img class="product-card__image" src="images/rock-3.webp" alt="Камень «Люкс»" width="300"
+                                height="300">
+                            <div class="card-body d-flex flex-column p-0 pt-3">
+                                <p class="product-card__price mb-0">9999 ₽</p>
+                                <h3 class="card-title fs-5 my-2">Камень «Люкс»</h3>
+                                <p class="card-text text-body-secondary">Камень подороже. Временно закончился.</p>
+                                <a class="btn btn-primary mt-auto" href="product.html">Подробнее</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-xl-4" data-category="budget" data-stock="yes">
+                        <article class="card product-card h-100 p-3">
+                            <img class="product-card__image" src="images/rock-4.webp" alt="Маленький камень" width="300"
+                                height="300">
+                            <div class="card-body d-flex flex-column p-0 pt-3">
+                                <p class="product-card__price mb-0">49 ₽</p>
+                                <h3 class="card-title fs-5 my-2">Маленький камень</h3>
+                                <p class="card-text text-body-secondary">Маленький, бесполезный.</p>
+                                <a class="btn btn-primary mt-auto" href="product.html">Подробнее</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-xl-4" data-category="gift" data-stock="yes">
+                        <article class="card product-card h-100 p-3">
+                            <span class="badge badge--sale product-card__badge">Скидка</span>
+                            <img class="product-card__image" src="images/rock-5.webp" alt="Камень с глазками" width="300"
+                                height="300">
+                            <div class="card-body d-flex flex-column p-0 pt-3">
+                                <p class="product-card__price mb-0">199 ₽</p>
+                                <h3 class="card-title fs-5 my-2">Камень с глазками</h3>
+                                <p class="card-text text-body-secondary">Смотрит на вас. Всегда.</p>
+                                <a class="btn btn-primary mt-auto" href="product.html">Подробнее</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-xl-4" data-category="premium gift" data-stock="yes">
+                        <article class="card product-card h-100 p-3">
+                            <img class="product-card__image" src="images/rock-6.webp" alt="Драгоценный камень"
+                                width="300" height="300">
+                            <div class="card-body d-flex flex-column p-0 pt-3">
+                                <p class="product-card__price mb-0">1999 ₽</p>
+                                <h3 class="card-title fs-5 my-2">Драгоценный камень</h3>
+                                <p class="card-text text-body-secondary">На самом деле нет.</p>
+                                <a class="btn btn-primary mt-auto" href="product.html">Подробнее</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <nav class="mb-3" aria-label="Быстрые ссылки">
+                <ul class="list-unstyled d-flex flex-wrap gap-3 mb-0">
+                    <li><a href="index.html#advantages">Почему камни</a></li>
+                    <li><a href="index.html#popular">Хиты продаж</a></li>
+                    <li><a href="index.html#faq">Вопросы</a></li>
+                    <li><a href="catalog.html#filters">Фильтры каталога</a></li>
+                    <li><a href="contacts.html#address">Как нас найти</a></li>
+                </ul>
+            </nav>
+            <p class="mb-0">© 2026 RockRockRock. Все камни защищены.</p>
+            <p class="mb-0">Почта: rockrock@ro.ck · Телефон: +7 (900) 000-00-00</p>
+        </div>
+    </footer>
+
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
